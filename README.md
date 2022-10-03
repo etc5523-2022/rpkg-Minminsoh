@@ -13,18 +13,11 @@ aircrafts in the United States from 1991 to 2018.
 
 ## Installation
 
-You can install the released version of wildlifestrikes from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("wildlifestrikes")
-```
-
 You can install the development version from GitHub with:
 
 ``` r
 # install.packages("devtools")
-#devtools::install_github("")
+devtools::install_github("etc5523-2022/rpkg-Minminsoh")
 ```
 
 ## Purposes of this package
@@ -76,7 +69,7 @@ count_frequency(sky)
 count_frequency_plot(sky)
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
 2)  The function, `cases_statemap()` presents the number of wildlife
     strikes reported in the selected states from 1991 to 2018 in a
@@ -88,7 +81,7 @@ count_frequency_plot(sky)
 cases_statemap(c("arizona", "california", "florida", "colorado", "texas"))
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
 ``` r
 cases_state(c("arizona", "california", "florida", "colorado", "texas"))
@@ -137,7 +130,7 @@ damages_airline("AMERICAN AIRLINES", 2011)
 histPlot("AMERICAN AIRLINES", 10)
 ```
 
-<img src="man/figures/README-unnamed-chunk-11-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-10-1.png" width="100%" />
 
 6)  The function **`calculate_corr()`** computes the correlation and
     p-value between that selected variable and repair costs incurred on
