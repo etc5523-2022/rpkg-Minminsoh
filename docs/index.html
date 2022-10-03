@@ -80,13 +80,10 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the released version of wildlifestrikes from <a href="https://CRAN.R-project.org" class="external-link">CRAN</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"wildlifestrikes"</span><span class="op">)</span></span></code></pre></div>
 <p>You can install the development version from GitHub with:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="co">#devtools::install_github("")</span></span></code></pre></div>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"etc5523-2022/rpkg-Minminsoh"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="purposes-of-this-package">Purposes of this package<a class="anchor" aria-label="anchor" href="#purposes-of-this-package"></a>
@@ -103,14 +100,14 @@
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">wildlifestrikes</span><span class="op">)</span></span></code></pre></div>
 <p>The below examples use the built-in dataset <code>wildlife_strikes</code> and <code>USmap</code>.</p>
 <p>The package contains the following functions:</p>
 <ol style="list-style-type: decimal">
 <li>The function, <code><a href="reference/count_frequency.html">count_frequency()</a></code> calculates the frequency of the observations for a particular variable in the <code>wildlife_strikes</code> data set in a tibble format while <code><a href="reference/count_frequency.html">count_frequency_plot()</a></code> shows the frequency of observations in a bar plot. It is helpful in identifying which condition in the variable is associated with higher occurrence of wildlife strikes to aircrafts. This function has been used in the Shiny App as well.</li>
 </ol>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/count_frequency.html">count_frequency</a></span><span class="op">(</span><span class="va">sky</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
 <span><span class="co">#&gt; # Groups:   sky [3]</span></span>
@@ -119,16 +116,16 @@
 <span><span class="co">#&gt; 1 No Cloud     105</span></span>
 <span><span class="co">#&gt; 2 Overcast      41</span></span>
 <span><span class="co">#&gt; 3 Some Cloud    79</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/count_frequency.html">count_frequency_plot</a></span><span class="op">(</span><span class="va">sky</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%"></p>
+<p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="100%"></p>
 <ol start="2" style="list-style-type: decimal">
 <li>The function, <code><a href="reference/cases_statemap.html">cases_statemap()</a></code> presents the number of wildlife strikes reported in the selected states from 1991 to 2018 in a choropleth map. Alternatively, run <code><a href="reference/cases_statemap.html">cases_state()</a></code> to show the observations for the selected states in a tibble format. This function has been used in the Shiny App as well.</li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/cases_statemap.html">cases_statemap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"arizona"</span>, <span class="st">"california"</span>, <span class="st">"florida"</span>, <span class="st">"colorado"</span>, <span class="st">"texas"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-7-1.png" width="100%"></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%"></p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/cases_statemap.html">cases_state</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"arizona"</span>, <span class="st">"california"</span>, <span class="st">"florida"</span>, <span class="st">"colorado"</span>, <span class="st">"texas"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 5 × 3</span></span>
 <span><span class="co">#&gt; # Groups:   Abbreviation of State [5]</span></span>
@@ -142,13 +139,13 @@
 <ol start="3" style="list-style-type: decimal">
 <li>The function, <code><a href="reference/cases_airline.html">cases_airline()</a></code>returns a message to you on the number of attacks incurred by your selected airline in the your selected year. This function has been used in the Shiny App as well.</li>
 </ol>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/cases_airline.html">cases_airline</a></span><span class="op">(</span><span class="st">"AMERICAN AIRLINES"</span>, <span class="fl">2018</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "AMERICAN AIRLINES incurred 4  wildlife strikes to the aircrafts in 2018."</span></span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
 <li>You can get further information on the number of attacks by your selected airline in your selected year by damage levels by running the function <code><a href="reference/damages_airline.html">damages_airline()</a></code>. This function has been used in the Shiny App as well.</li>
 </ol>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/damages_airline.html">damages_airline</a></span><span class="op">(</span><span class="st">"AMERICAN AIRLINES"</span>, <span class="fl">2011</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 4</span></span>
 <span><span class="co">#&gt; # Groups:   operator, damage, incident_year [3]</span></span>
@@ -160,13 +157,13 @@
 <ol start="5" style="list-style-type: decimal">
 <li>The function <code>hist.R()</code>, builds the histogram which shows the distribution of repair costs incurred for the selected airline from 1991 to 2018 due to wildlife strikes. This function has been used in the Shiny App as well.</li>
 </ol>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/histPlot.html">histPlot</a></span><span class="op">(</span><span class="st">"AMERICAN AIRLINES"</span>, <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-11-1.png" width="100%"></p>
+<p><img src="reference/figures/README-unnamed-chunk-10-1.png" width="100%"></p>
 <ol start="6" style="list-style-type: decimal">
 <li>The function <strong><code><a href="reference/calculate_corr.html">calculate_corr()</a></code></strong> computes the correlation and p-value between that selected variable and repair costs incurred on airline due to wildlife strikes. This is helpful in finding the relationship between the variable and repair costs incurred on airline due to wildlife strikes.</li>
 </ol>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/calculate_corr.html">calculate_corr</a></span><span class="op">(</span>var <span class="op">=</span> <span class="va">height</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 2</span></span>
 <span><span class="co">#&gt;   correlation  pval</span></span>
@@ -186,7 +183,7 @@
 <h2 id="launch-shiny-app">Launch Shiny App<a class="anchor" aria-label="anchor" href="#launch-shiny-app"></a>
 </h2>
 <p>To launch the shiny app, run the following:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/run_app.html">run_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
