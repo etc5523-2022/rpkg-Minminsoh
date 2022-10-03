@@ -1,27 +1,5 @@
-reference:
-- title: Wildlifestrikes
-  desc: >
-    Functions for an analysis of wildlife strikes to aircrafts in the United States from 1991 to 2018.
-- contents:
-  - count_frequency
-  - count_frequency_plot
-  - cases_statemap
-  - cases_state
-  - cases_airline
-  - damages_airline
-  - histPlot
-  - calculate_corr
-- title: Datasets
-  desc: >
-    Built-in datasets
-- contents:
-  - wildlife_strikes
-  - USmap
-- title: "Tools supporting Shiny"
-  desc: >
-    Functions which supports Shiny App
-- contents:
-  - ui_input
-  - theme_plot
-  - run_app
+url: ~
+template:
+  bootstrap: 5
+  bootstwatch: flatly
 
