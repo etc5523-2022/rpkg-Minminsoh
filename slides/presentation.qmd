@@ -1,0 +1,417 @@
+---
+pagetitle: "Wildlife Strikes to Aircrafts in the United States from 1991 to 2018"
+author: "Min Min Soh"
+format: 
+  revealjs:
+    theme: serif
+    slide-number: true
+    show-slide-number: all
+    controls: true
+    width: 1280
+    height: 720
+    incremental: true
+    scrollable: true
+execute:
+  echo: true
+---
+
+##  {background-color="black" background-image=https://media.cntraveler.com/photos/572a418aef80b66d1671815c/16:9/w_2560%2Cc_limit/GettyImages-497721394.jpg}
+
+
+<br><br>
+
+<center style="font-size:3em; color: white; font-weight:bold;">
+
+Wildlife Strikes to Aircrafts in the United States from 1991 to 2018
+
+</center>
+
+
+## Overview 
+
+-   Aircraft collisions with birds and other wildlife (wildlife
+strikes) have become a growing concern for aviation safety. 
+
+- Globally, wildlife strikes killed more than 301 people and
+destroyed over 298 aircraft from 1988-2021.
+
+
+# R Package <br> `wildlifestrikes` {background-color="#006DAE"}
+
+## Load Library
+
+```{r }
+#| echo: true
+
+#install...
+library(wildlifestrikes)
+
+```
+
+
+## {#aim}
+
+::: {.callout-important }
+
+## Aim
+
+::: {.incremental}
+
+- inform users of the conditions and factors that affect the frequency of occurrence of wildlife strikes on aircrafts 
+- analyse the number of cases of wildlife strikes on aircrafts in the user selected states 
+- analyse the impact of wildlife strikes on airlines in terms of number of cases, damage levels and repair costs
+- calculate the correlation and p-value between selected variable and repair cost incurred due to wildlife strikes  
+
+:::
+
+:::
+
+
+## Goal 1 Conditions and Factors 
+
+::: {.panel-tabset}
+
+### count_frequency()
+
+Calculate frequency of occurrence for a particular variable in the `wildlife_strikes` dataset in a **dataframe** format.
+
+```{r eval = FALSE}
+count_frequency <- function(var){
+  
+  output<- wildlife_strikes %>%
+    group_by({{var}})%>%
+    count()
+
+  return(output)
+}
+
+```
+
+ 
+
+### count_frequency_plot()
+
+Compute frequency of observations in a barplot format. 
+
+```{r eval=FALSE}
+
+count_frequency_plot <- function(var){
+
+  # calculate frequency---
+  output <- wildlife_strikes %>%
+    group_by({{var}})%>%
+    count()
+
+  # plot frequency---
+  output %>%
+    ggplot(aes(x = {{var}}, n))+
+    geom_col() +
+    geom_text(aes(label = paste(n)),
+              position= position_stack(vjust = 0.5),
+              color = "white",size = 5)+
+    labs(y = "Number of Cases")+
+    theme_plot("bar")
+
+}
+```
+
+
+
+### Example 
+
+```{r}
+
+count_frequency(sky)
+
+count_frequency_plot(sky)
+
+```
+
+- Wildlife strikes tend to occur the most where the sky condition has no cloud!
+
+:::
+
+## Goal 2 Impact of wildlife strikes on user selected states 
+
+::: {.panel-tabset}
+
+### cases_state()
+
+Calculate the number of wildlife strikes reported in each state from 1991 to 2018.
+
+```{r eval=FALSE}
+cases_state <- function (input_state){
+
+  #calculate number of cases of wildlife strike reported in each state
+  wildlife_state <- wildlife_strikes %>%
+    group_by(abb)%>%
+    filter(!abb == "N/A")%>%
+    count()
+
+  #join wildlife_strikes data with USmap data to extract the full name of the state
+  wildlife_state <- inner_join (wildlife_state, USmap, by = "abb") %>%
+    select(abb:region)%>%
+    filter(region %in% input_state) %>%
+    rename(`Abbreviation of State` = abb,
+           `Number of cases` = n,
+           `Name of state` = region) %>%
+    distinct()
+
+  return(wildlife_state)
+}
+
+```
+
+### cases_statemap()
+
+Creates a choropleth map showing the number of cases in the selected states
+
+```{r eval=FALSE}
+cases_statemap <- function (input_state){
+
+  #calculate number of cases of wildlife strike reported in each state
+  wildlife_state <- wildlife_strikes %>%
+    group_by(abb)%>%
+    filter(!abb == "N/A")%>%
+    count()
+
+  #join wildlife_strikes data with USmap data
+  wildlife_state <- inner_join(wildlife_state, USmap, by = "abb")
+
+  #compute centroid
+  centroids <- USmap %>%
+    group_by(abb) %>%
+    summarize(centroid_long = mean(long),
+              centroid_lat = mean(lat))
+
+  centroids <- left_join(wildlife_state, centroids, by = "abb")%>%
+    select(!group)
+
+  # extract states
+  states <- unique(wildlife_state$region)
+
+
+  df <- filter(wildlife_state, region %in% input_state)
+
+  ggplot2::ggplot(wildlife_state, aes(long, lat, group = region)) +
+    ggplot2::geom_polygon(data = USmap, aes(long, lat, group = region), fill ="grey", color ="white")+
+    ggplot2::geom_polygon(data = df, aes(long, lat, group = region, fill = n), color = "white")+
+    ggplot2::geom_text(data = centroids, aes (x = centroid_long, y = centroid_lat, group = region, label = paste(abb, n, sep = "\n")), size  = 2.5) +
+    labs (fill = "Count of bird strike")+
+    ggplot2::ggtitle("Count of Birdstrike by location from 1991 to 2018")+
+    ggplot2::scale_fill_distiller(palette = "Spectral")+
+    theme_plot("map")
+}
+
+```
+
+### Example
+
+```{r}
+cases_state(c("arizona", "california", "florida", "colorado", "texas"))
+
+cases_statemap(c("arizona", "california", "florida", "colorado", "texas"))
+```
+
+
+:::
+
+
+## Goal 3 Impact of wildlife strikes on airlines
+
+### Number of cases 
+
+::: {.panel-tabset}
+
+#### cases_airline()
+
+Calculate the number of wildlife attacks incurred by selected airline in the selected year.
+
+```{r eval=FALSE}
+
+cases_airline <- function(input_operator, input_year){
+
+  # calculate number of attacks incurred by selected airline in the selected year
+
+  a <- wildlife_strikes %>%
+    filter(operator == input_operator) %>%
+    filter(incident_year == input_year)%>%
+    count()
+
+  b <- input_operator
+
+  c <- input_year
+
+  output <- paste0( b, " incurred ", a, "  wildlife strikes to the aircrafts in ", c, ".")
+
+  return(output)
+
+}
+
+```
+
+
+#### Example
+
+```{r}
+cases_airline("AMERICAN AIRLINES", 2018)
+```
+
+:::
+
+## Goal 3 Impact of wildlife strikes on airlines
+
+### Damages level 
+
+::: {.panel-tabset}
+
+#### damages_airline()
+
+Computes the number of attacks incurred by selected airline in the selected year  by damages level
+
+```{r eval=FALSE}
+damages_airline <- function(input_operator, input_year){
+
+
+  #Calculate attacks by damage levels
+
+  damage <- wildlife_strikes%>%
+    mutate(damage = factor (damage,
+                            levels = c("M", "M?", "N", "S"),
+                            labels = c ("Minor", "Uncertain", "None", "Substantial")))%>%
+    group_by(operator, damage, incident_year)%>%
+    count()
+
+  output <- damage%>%
+    filter(operator == input_operator,
+           incident_year == input_year )
+
+  return(output)
+
+}
+```
+
+#### Example
+
+```{r}
+damages_airline("AMERICAN AIRLINES", 2011)
+```
+
+::: 
+
+## Goal 3 Impact of wildlife strikes on airlines
+
+### Repair costs incurred
+
+::: {.panel-tabset}
+
+#### histPlot()
+
+Build the histogram which shows the distribution of repair cost incurred for the selected airline from 1990 to 2018 due to wildlife strikes
+
+```{r eval=FALSE}
+histPlot <- function(input_operator, input_bins){
+
+  x <- wildlife_strikes %>%
+    filter(operator == input_operator)
+
+  ggplot2::ggplot(x, aes(cost_repairs_infl_adj)) +
+    ggplot2::geom_histogram(bins = input_bins, fill = "#6295ED") +
+    ggplot2::theme_bw(base_size = 14) +
+    labs(x = "Repair Costs", y = "Count")+
+    ggplot2::scale_x_continuous(labels = scales::comma)+
+    theme_plot("hist")
+
+}
+```
+
+#### Example
+
+```{r}
+histPlot("AMERICAN AIRLINES", 10)
+```
+
+:::
+
+## Goal 4 Calculate the correlation and p-value between selected variable and repair cost incurred 
+
+::: {.panel-tabset}
+
+### calculate_corr()
+
+Computes the correlation and p-value between that selected variable and repair costs incurred on airline due to wildlife strikes.
+
+```{r eval=FALSE}
+calculate_corr <- function(var){
+
+  #convert variable into factor
+  var1_chr <- rlang::as_label(rlang::ensym(var))
+
+  # alert user if variables chosen are not in data set
+  if (!(var1_chr %in% names(wildlife_strikes))){
+    stop(paste0("{var1_chr} is not in the data set."))
+  }
+
+
+  # calculate correlation
+  output<- stats::cor.test(
+    x = wildlife_strikes %>% dplyr::pull({{var}}),
+    y = wildlife_strikes %>% dplyr::pull(cost_repairs_infl_adj)
+  ) %>%
+    # tidy up results
+    broom::tidy()%>%
+    # retain and rename relevant bits
+    dplyr::select(
+      correlation = .data$estimate,
+      pval = .data$p.value
+    )
+
+  attr(output$correlation, "names") <- NULL
+
+  return(output)
+
+}
+
+```
+
+### Example
+
+```{r}
+calculate_corr(var = height)
+```
+
+:::
+
+
+## Recap
+
+::: callout-important
+
+## Summary
+
+- Conditions and factors which affect the wildlife strikes occurence on aircrafts
+  - count_frequency()
+  - count_frequency_plot()
+  
+- Number of cases of wildlife strikes on aircrafts in the user selected states 
+  - cases_state()
+  - cases_statemap()
+  
+- Impact of wildlife strikes on airlines in terms of : 
+  - number of cases
+    - cases_airline()
+  - damage levels
+    - damages_airline()
+  - repair costs
+    - histPlot()
+    
+- Correlation and p-value between selected variable and repair cost incurred
+  - calculate_corr()
+  
+- Functions used solely for ShinyApp
+  - ui_input()
+  - theme_plot()
+
+:::
+
+

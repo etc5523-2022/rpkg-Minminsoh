@@ -1,0 +1,42 @@
+
+# Data
+ 
+The `wildlife_strikes.rda` data set is about wildlife strike incidents on aircraft in the USA between 1991 and 2018. The data set was obtained from [tidytuesday](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-23/wildlife_impacts.csv").
+
+
+## Purpose
+
+This wildlifestrikes package aims to illustrate via Shiny Application the statistics and impacts of wildlife strikes on planes/aircrafts. 
+
+1. let the user to guess which factors and conditions affect the frequency and occurrence of wildlife strikes on aircrafts, thus making learning aspects of data playful,
+
+2. Highlight the number of cases and distribution of cases by State via a choropleth map(i.e. map of USA), thus making it easier for user to digest the data,
+
+3. Interactively present the impact of wildlife strikes on airplane by number of cases and damage level by allowing the user to choose the airplane and year of the data,  
+
+4. Personalise the view of the data for the user by allowing them to choose what they want to see by for example: choosing which state to view and allowing users to adjust the sliding bar for the Distribution of Repair Costs to change the view of the histogram 
+
+
+## Shiny Application
+
+The Shiny Application in this package contains three tabs. 
+
+1) The first tab is built by the `count_frequency()` function and prompts users to guess answers to three questions relating to the factors/conditions affecting wildlife strikes. 
+2) The second tab is built by the `plot_map.R` function (specifically `cases_state(input_state)` and `cases_statemap(input_state)`) and shows the number of cases for each U.S. State in tibble format and on the choropleth map. 
+3) The third and final tab is built by `cases_airline()` function which returns a message to the user on the number of wildlife strike cases incurred by the selected airplane in the selected year. This is then further categorised into different damages level by using the `damages_airline` function. `hist.R` function creates a histogram showing the distribution of repair costs incurred for the airline selected by the user in a particular year, ranging from 1991 to 2018. 
+
+
+There are other functions created solely to support the Shiny Application. For example, the `ui_inputs()` function creates the user interface inputs in the Shiny App and `theme_plots()` creates custom theme for plots. 
+
+
+
+#### Creator
+
+Min Min Soh (mmsoh1@student.monash.edu)
+
+<details>
+<summary>Session information</summary>
+```{r, echo = FALSE}
+sessioninfo::session_info()
+```
+</details>

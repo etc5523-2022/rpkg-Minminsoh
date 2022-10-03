@@ -1,2 +1,6 @@
 ^yourpkg\.Rproj$
 ^\.Rproj\.user$
+^data-raw$
+^LICENSE\.md$
+^slides$
+^README\.Rmd$

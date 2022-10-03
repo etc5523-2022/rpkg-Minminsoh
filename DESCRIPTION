@@ -1,11 +1,34 @@
-Package: change-this-to-your-pkg-name
-Title: What the Package Does (One Line, Title Case)
+Package: wildlifestrikes
+Title: Wildlife Strikes to Civil Aircraft in the United States
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "your@email.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person(given = "Min Min",
+           family = "Soh",
+           role = c("aut", "cre"),
+           email = "mmsoh1@student.monash.edu")
+Description: A package which analyses the wildlife strikes to civil aircraft in the United States from 1900 to 2020.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Language: es
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Suggests: 
+    knitr,
+    plotly,
+    rmarkdown,
+    shinythemes,
+    testthat (>= 3.0.0),
+    tidyverse
+Config/testthat/edition: 3
+Imports: 
+    dplyr,
+    ggplot2,
+    rlang,
+    scales,
+    shiny,
+    broom,
+    magrittr
+VignetteBuilder: knitr
