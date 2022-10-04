@@ -12,6 +12,7 @@ Encoding: UTF-8
 Language: es
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
+URL: https://github.com/etc5523-2022/rpkg-Minminsoh
 Depends: 
     R (>= 2.10)
 LazyData: true
