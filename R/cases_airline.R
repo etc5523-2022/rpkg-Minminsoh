@@ -19,6 +19,8 @@
 
 cases_airline <- function(input_operator, input_year) {
 
+  wildlife_strikes <- wildlifestrikes::wildlife_strikes
+
   # calculate number of attacks incurred by selected airline in the selected year
 
   a <- wildlife_strikes %>%

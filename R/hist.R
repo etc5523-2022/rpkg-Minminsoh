@@ -17,6 +17,8 @@
 
 histPlot <- function(input_operator, input_bins) {
 
+  wildlife_strikes <- wildlifestrikes::wildlife_strikes
+
   x <- wildlife_strikes %>%
   filter(operator == input_operator)
 

@@ -43,9 +43,14 @@ destroyed over 298 aircraft from 1988-2021.
 ```{r }
 #| echo: true
 
-#install...
+#devtools::install_github("etc5523-2022/rpkg-Minminsoh")
 library(wildlifestrikes)
 
+```
+
+```{r eval=FALSE}
+#Launch Shiny App 
+run_app()
 ```
 
 
@@ -307,7 +312,7 @@ damages_airline("AMERICAN AIRLINES", 2011)
 
 #### histPlot()
 
-Build the histogram which shows the distribution of repair cost incurred for the selected airline from 1990 to 2018 due to wildlife strikes
+Build the histogram which shows the distribution of repair cost incurred for the selected airline from 1991 to 2018 due to wildlife strikes
 
 ```{r eval=FALSE}
 histPlot <- function(input_operator, input_bins){

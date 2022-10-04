@@ -15,6 +15,8 @@
 
 calculate_corr <- function(var) {
 
+  wildlife_strikes <- wildlifestrikes::wildlife_strikes
+
   # convert variable into factor
  var1_chr <- rlang::as_label(rlang::ensym(var))
 

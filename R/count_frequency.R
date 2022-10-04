@@ -21,6 +21,7 @@
 
 count_frequency <- function(var) {
 
+  wildlife_strikes <- wildlifestrikes::wildlife_strikes
 
   # calculate frequency---
   output <- wildlife_strikes %>%

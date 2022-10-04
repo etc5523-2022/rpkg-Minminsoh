@@ -18,6 +18,8 @@
 
 cases_statemap <- function(input_state) {
 
+  wildlife_strikes <- wildlifestrikes::wildlife_strikes
+
   #calculate number of cases of wildlife strike reported in each state
   wildlife_state <- wildlife_strikes %>%
    group_by(abb) %>%

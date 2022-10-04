@@ -8,7 +8,7 @@ The `wildlife_strikes.rda` data set is about wildlife strike incidents on aircra
 
 This wildlifestrikes package aims to illustrate via Shiny Application the statistics and impacts of wildlife strikes on planes/aircrafts. 
 
-1. let the user to guess which factors and conditions affect the frequency and occurrence of wildlife strikes on aircrafts, thus making learning aspects of data playful,
+1. let the user to learn which factors and conditions affect the frequency and occurrence of wildlife strikes on aircrafts, thus making learning aspects of data playful,
 
 2. Highlight the number of cases and distribution of cases by State via a choropleth map(i.e. map of USA), thus making it easier for user to digest the data,
 

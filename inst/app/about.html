@@ -375,7 +375,7 @@ set was obtained from <a href="https://raw.githubusercontent.com/rfordatascience
 <p>This wildlifestrikes package aims to illustrate via Shiny Application
 the statistics and impacts of wildlife strikes on planes/aircrafts.</p>
 <ol style="list-style-type: decimal">
-<li><p>let the user to guess which factors and conditions affect the
+<li><p>let the user to learn which factors and conditions affect the
 frequency and occurrence of wildlife strikes on aircrafts, thus making
 learning aspects of data playful,</p></li>
 <li><p>Highlight the number of cases and distribution of cases by State
@@ -400,15 +400,15 @@ to the factors/conditions affecting wildlife strikes.</p></li>
 <li><p>The second tab is built by the <code>plot_map.R</code> function
 (specifically <code>cases_state(input_state)</code> and
 <code>cases_statemap(input_state)</code>) and shows the number of cases
-for each U.S. State in tibble format and on the choropleth map.</p></li>
+from 1991 to 2018 for your selected U.S. State in tibble format and on
+the choropleth map.</p></li>
 <li><p>The third and final tab is built by <code>cases_airline()</code>
-function which returns a message to the user on the number of wildlife
-strike cases incurred by the selected airplane in the selected year.
-This is then further categorised into different damages level by using
-the <code>damages_airline</code> function. <code>hist.R</code> function
+function which returns a message to you on the number of wildlife strike
+cases incurred by the selected airplane in the selected year. This is
+then further categorised into different damages level by using the
+<code>damages_airline</code> function. <code>hist.R</code> function
 creates a histogram showing the distribution of repair costs incurred
-for the airline selected by the user in a particular year, ranging from
-1991 to 2018.</p></li>
+ranging from 1991 to 2018 for the airline you have selected.</p></li>
 </ol>
 <p>There are other functions created solely to support the Shiny
 Application. For example, the <code>ui_inputs()</code> function creates

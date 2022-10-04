@@ -17,6 +17,7 @@
 
 damages_airline <- function(input_operator, input_year) {
 
+  wildlife_strikes <- wildlifestrikes::wildlife_strikes
 
   #Calculate attacks by damage levels
 
