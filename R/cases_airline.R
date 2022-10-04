@@ -17,21 +17,21 @@
 #' @import dplyr
 
 
-cases_airline <- function(input_operator, input_year){
+cases_airline <- function(input_operator, input_year) {
 
   # calculate number of attacks incurred by selected airline in the selected year
 
   a <- wildlife_strikes %>%
-    filter(operator == input_operator) %>%
-    filter(incident_year == input_year)%>%
-    count()
+   filter(operator == input_operator) %>%
+   filter(incident_year == input_year) %>%
+   count()
 
-  b <- input_operator
+ b <- input_operator
 
-  c <- input_year
+ c <- input_year
 
-  output <- paste0( b, " incurred ", a, "  wildlife strikes to the aircrafts in ", c, ".")
+ output <- paste0(b, " incurred ", a, "  wildlife strikes to the aircrafts in ", c, ".")
 
-  return(output)
+ return(output)
 
 }

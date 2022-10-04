@@ -15,24 +15,26 @@
 #'
 #' @import dplyr
 
-damages_airline <- function(input_operator, input_year){
+damages_airline <- function(input_operator, input_year) {
 
 
   #Calculate attacks by damage levels
 
-  damage <- wildlife_strikes%>%
-    mutate(damage = factor (damage,
-                            levels = c("M", "M?", "N", "S"),
-                            labels = c ("Minor", "Uncertain", "None", "Substantial")))%>%
-    group_by(operator, damage, incident_year)%>%
-    count()
+  damage <- wildlife_strikes %>%
+  mutate(damage = factor(damage,
+    levels = c("M", "M?", "N", "S"),
+    labels = c("Minor", "Uncertain", "None", "Substantial")
+  )) %>%
+  group_by(operator, damage, incident_year) %>%
+  count()
 
-  output <- damage%>%
-    filter(operator == input_operator,
-           incident_year == input_year )
+  output <- damage %>%
+  filter(
+    operator == input_operator,
+    incident_year == input_year
+  )
 
-  return(output)
-
+return(output)
 
 }
 

@@ -65,7 +65,7 @@ ui <- navbarPage(
         "Geographic Differences", icon = icon ("earth-americas"),
         sidebarLayout(
           sidebarPanel(
-            h3("How many cases of wildlife strikes on aircrafts reported in each states?"),
+            h3("How many cases of wildlife strikes on aircrafts reported in each states from 1991 to 2018?"),
             tags$br(),
             ui_input("state", "statename", USmap)),
           mainPanel(

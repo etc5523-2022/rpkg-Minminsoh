@@ -368,76 +368,52 @@ pre code {
 <div id="data" class="section level1">
 <h1>Data</h1>
 <p>The <code>wildlife_strikes.rda</code> data set is about wildlife
-strike incidents on aircraft of commercial domestic airlines in the USA
-between 1991 and 2018. The data set was obtained from ___ in which the
-link of the data can be obtained [here].</p>
+strike incidents on aircraft in the USA between 1991 and 2018. The data
+set was obtained from <a href="https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-23/wildlife_impacts.csv%22">tidytuesday</a>.</p>
 <div id="purpose" class="section level2">
 <h2>Purpose</h2>
 <p>This wildlifestrikes package aims to illustrate via Shiny Application
-the statistics and impacts of wildlife strikes on planes/aircrafts for
-domestic U.S. commercial airlines.</p>
-<p>The goals of the package are to: - Inform users of the conditions and
-factors that affect the frequency and occurrence of wildlife strikes on
-aircrafts - Highlight the number of cases and distribution of cases by
-State - Personalise the view of the data for the user by allowing them
-to choose what they want to see - Make learning aspects of the data
-playful by presenting the data and statistics in an interactive app -
-Make the data easier for users to digest - Illustrate the repair costs
-for each airline and the factors affecting these costs - Provide an easy
-to use and clear platform to digest and understand the data</p>
-<p>The package contains 8 functions: 1) The first function,
-<code>calculate_corr.R</code> takes 2 variables from the
-<code>wildlife_strikes</code> data set and computes the correlation and
-p-value. 2) The second function, <code>count_frequency.R</code>
-calculates the frequency of the observations for a particular variable
-in the <code>wildlife_strikes</code> data set.
-<code>count_frequency(var)</code> shows frequency of observations in
-numerical form/tibble format. ‘count_frequency_plot(var)’ shows the
-frequency of observations in a bar plot 3) The third function,
-<code>hist.R</code>, builds the histogram which shows the distribution
-of repair costs incurred for the selected airline from 1991 to 2018 due
-to wildlife strikes, where data is obtained from the
-<code>wildlife_strikes</code> data set. 4) The fourth function,
-<code>plot_map.R</code>, calculates the number of wildlife strikes
-reported in each state from 1991 to 2018 in the
-<code>wildlife_strikes</code> data set.
-<code>cases_state(input_state)</code> shows the observations for the
-selected states in a tibble format.
-<code>cases_statemap(input_state)</code> shows the number of cases in
-the selected states in a map. 5) The fifth function,
-<code>theme_plot.R</code> creates a custom theme for the bar plots and
-maps 6) The sixth function, <code>ui_inputs.R</code> creates user
-interface inputs for the Shiny application 7) Damage airlines? 8) …</p>
-<p>###Shiny Application</p>
-<p>The Shiny Application in this package contains three tabs. 1) The
-first tab is built by the <code>count_frequency.R</code> function and
-prompts users to guess answers to three questions relating to the
-factors/conditions affecting wildlife strikes. 2) The second tab is
-built by the <code>plot_map.R</code> function (specifically
-<code>cases_state(input_state)</code> and
-<code>cases_statemap(input_state)</code>) and shows the number of cases
-for each U.S. State in tibble format and on the map. 3) The third and
-final tab is built by the <code>hist.R</code> function which creates a
-histogram showing the distribution of repair costs incurred for the
-airline selected by the user in a particular year, ranging from 1991 to
-2018.</p>
-<p>The purpose of the application is to:</p>
+the statistics and impacts of wildlife strikes on planes/aircrafts.</p>
 <ol style="list-style-type: decimal">
-<li>let the user to guess what conditions/factors affect the occurrence
-and frequency of wildlife strikes on aircrafts</li>
-<li>Personalise the view of the data for the user by allowing them to
+<li><p>let the user to guess which factors and conditions affect the
+frequency and occurrence of wildlife strikes on aircrafts, thus making
+learning aspects of data playful,</p></li>
+<li><p>Highlight the number of cases and distribution of cases by State
+via a choropleth map(i.e. map of USA), thus making it easier for user to
+digest the data,</p></li>
+<li><p>Interactively present the impact of wildlife strikes on airplane
+by number of cases and damage level by allowing the user to choose the
+airplane and year of the data,</p></li>
+<li><p>Personalise the view of the data for the user by allowing them to
 choose what they want to see by for example: choosing which state to
 view and allowing users to adjust the sliding bar for the Distribution
-of Repair Costs to change the view of the histogram</li>
-<li>Make learning aspects of the data playful by making the app
-interactive</li>
-<li>Make the data easier for users to digest by using visuals such as
-graphs and maps</li>
+of Repair Costs to change the view of the histogram</p></li>
 </ol>
-<p>The functions are incorporated into the Shiny Application. For
-example, the <code>plot_map.R</code> function is used in the second tab
-of the Shiny App, as it shows the number of cases for each U.S. State in
-tibble format and on the map.</p>
+</div>
+<div id="shiny-application" class="section level2">
+<h2>Shiny Application</h2>
+<p>The Shiny Application in this package contains three tabs.</p>
+<ol style="list-style-type: decimal">
+<li><p>The first tab is built by the <code>count_frequency()</code>
+function and prompts users to guess answers to three questions relating
+to the factors/conditions affecting wildlife strikes.</p></li>
+<li><p>The second tab is built by the <code>plot_map.R</code> function
+(specifically <code>cases_state(input_state)</code> and
+<code>cases_statemap(input_state)</code>) and shows the number of cases
+for each U.S. State in tibble format and on the choropleth map.</p></li>
+<li><p>The third and final tab is built by <code>cases_airline()</code>
+function which returns a message to the user on the number of wildlife
+strike cases incurred by the selected airplane in the selected year.
+This is then further categorised into different damages level by using
+the <code>damages_airline</code> function. <code>hist.R</code> function
+creates a histogram showing the distribution of repair costs incurred
+for the airline selected by the user in a particular year, ranging from
+1991 to 2018.</p></li>
+</ol>
+<p>There are other functions created solely to support the Shiny
+Application. For example, the <code>ui_inputs()</code> function creates
+the user interface inputs in the Shiny App and
+<code>theme_plots()</code> creates custom theme for plots.</p>
 <div id="creator" class="section level4">
 <h4>Creator</h4>
 <p>Min Min Soh (<a href="mailto:mmsoh1@student.monash.edu" class="email">mmsoh1@student.monash.edu</a>)</p>
@@ -455,7 +431,7 @@ Session information
 ##  collate  en_AU.UTF-8
 ##  ctype    en_AU.UTF-8
 ##  tz       Australia/Melbourne
-##  date     2022-10-03
+##  date     2022-10-04
 ##  pandoc   2.18 @ /Applications/RStudio.app/Contents/MacOS/quarto/bin/tools/ (via rmarkdown)
 ## 
 ## ─ Packages ───────────────────────────────────────────────────────────────────

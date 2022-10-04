@@ -16,40 +16,40 @@
 #' @import dplyr
 #' @export
 
-cases_statemap <- function (input_state){
+cases_statemap <- function(input_state) {
 
   #calculate number of cases of wildlife strike reported in each state
   wildlife_state <- wildlife_strikes %>%
-    group_by(abb)%>%
-    filter(!abb == "N/A")%>%
-    count()
+   group_by(abb) %>%
+   filter(!abb == "N/A") %>%
+   count()
 
   #join wildlife_strikes data with USmap data
   wildlife_state <- inner_join(wildlife_state, USmap, by = "abb")
 
   #compute centroid
-
   centroids <- USmap %>%
-    group_by(abb) %>%
-    summarize(centroid_long = mean(long),
-              centroid_lat = mean(lat))
+   group_by(abb) %>%
+   summarize(
+     centroid_long = mean(long),
+     centroid_lat = mean(lat)
+   )
 
-  centroids <- left_join(wildlife_state, centroids, by = "abb")%>%
-    select(!group)
+ centroids <- left_join(wildlife_state, centroids, by = "abb") %>%
+  select(!group)
 
-  # extract states
-  states <- unique(wildlife_state$region)
+ # extract states
+ states <- unique(wildlife_state$region)
 
-
-  df <- filter(wildlife_state, region %in% input_state)
+ df <- filter(wildlife_state, region %in% input_state)
 
   ggplot2::ggplot(wildlife_state, aes(long, lat, group = region)) +
-    ggplot2::geom_polygon(data = USmap, aes(long, lat, group = region), fill ="grey", color ="white")+
-    ggplot2::geom_polygon(data = df, aes(long, lat, group = region, fill = n), color = "white")+
-    ggplot2::geom_text(data = centroids, aes (x = centroid_long, y = centroid_lat, group = region, label = paste(abb, n, sep = "\n")), size  = 2.5) +
-    labs (fill = "Count of wildlife strike")+
-    ggplot2::ggtitle("Count of wildlife by location from 1991 to 2018")+
-    ggplot2::scale_fill_distiller(palette = "Spectral")+
+    ggplot2::geom_polygon(data = USmap, aes(long, lat, group = region), fill = "grey", color = "white") +
+    ggplot2::geom_polygon(data = df, aes(long, lat, group = region, fill = n), color = "white") +
+    ggplot2::geom_text(data = centroids, aes(x = centroid_long, y = centroid_lat, group = region, label = paste(abb, n, sep = "\n")), size = 2.5) +
+    labs(fill = "Count of wildlife strike") +
+    ggplot2::ggtitle("Count of wildlife by location from 1991 to 2018") +
+    ggplot2::scale_fill_distiller(palette = "Spectral") +
     theme_plot("map")
 }
 
@@ -59,21 +59,23 @@ cases_statemap <- function (input_state){
 #'
 
 
-cases_state <- function (input_state){
+cases_state <- function(input_state) {
 
 #calculate number of cases of wildlife strike reported in each state
 wildlife_state <- wildlife_strikes %>%
-  group_by(abb)%>%
-  filter(!abb == "N/A")%>%
+  group_by(abb) %>%
+  filter(!abb == "N/A") %>%
   count()
 
 #join wildlife_strikes data with USmap data to extract the full name of the state
-wildlife_state <- inner_join (wildlife_state, USmap, by = "abb") %>%
-  select(abb:region)%>%
+wildlife_state <- inner_join(wildlife_state, USmap, by = "abb") %>%
+  select(abb:region) %>%
   filter(region %in% input_state) %>%
-  rename(`Abbreviation of State` = abb,
-         `Number of cases` = n,
-         `Name of state` = region) %>%
+  rename(
+    `Abbreviation of State` = abb,
+    `Number of cases` = n,
+    `Name of state` = region
+  ) %>%
   distinct()
 
 return(wildlife_state)

@@ -15,16 +15,16 @@
 
 
 
-histPlot <- function(input_operator, input_bins){
+histPlot <- function(input_operator, input_bins) {
 
   x <- wildlife_strikes %>%
-    filter(operator == input_operator)
+  filter(operator == input_operator)
 
-  ggplot2::ggplot(x, aes(cost_repairs_infl_adj)) +
-    ggplot2::geom_histogram(bins = input_bins, fill = "#6295ED") +
-    ggplot2::theme_bw(base_size = 14) +
-    labs(x = "Repair Costs", y = "Count")+
-    ggplot2::scale_x_continuous(labels = scales::comma)+
-    theme_plot("hist")
+ggplot2::ggplot(x, aes(cost_repairs_infl_adj)) +
+  ggplot2::geom_histogram(bins = input_bins, fill = "#6295ED") +
+  ggplot2::theme_bw(base_size = 14) +
+  labs(x = "Repair Costs", y = "Count") +
+  ggplot2::scale_x_continuous(labels = scales::comma) +
+  theme_plot("hist")
 
 }

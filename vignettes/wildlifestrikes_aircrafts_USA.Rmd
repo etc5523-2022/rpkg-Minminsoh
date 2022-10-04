@@ -64,8 +64,8 @@ As mentioned previously, you could use the functions individually which are demo
 
 Alternatively, some of these functions have been embedded in the Shiny application as well, which provides an easy to use and clear platform to digest and understand the data. You could launch the shiny app with a single line of code: 
 
-```{r run_app}
-#run_app()
+```{r eval=FALSE}
+run_app()
 ```
 
 ## Goal 1: Inform users of the conditions and factors that affect the frequency and occurrence of wildlife strikes on aircrafts 

@@ -19,13 +19,13 @@
 #'
 #' @import dplyr
 
-count_frequency <- function(var){
+count_frequency <- function(var) {
 
 
   # calculate frequency---
-  output<- wildlife_strikes %>%
-    group_by({{var}})%>%
-    count()
+  output <- wildlife_strikes %>%
+  group_by({{ var }}) %>%
+  count()
 
   return(output)
 
@@ -37,22 +37,23 @@ count_frequency <- function(var){
 #'
 #' @export
 
-count_frequency_plot <- function(var){
+count_frequency_plot <- function(var) {
 
   # calculate frequency---
   output <- wildlife_strikes %>%
-    group_by({{var}})%>%
-    count()
+  group_by({{ var }}) %>%
+  count()
 
   # plot frequency---
   output %>%
-    ggplot(aes(x = {{var}}, n))+
-    geom_col() +
-    geom_text(aes(label = paste(n)),
-              position= position_stack(vjust = 0.5),
-              color = "white",size = 5)+
-    labs(y = "Number of Cases")+
-    theme_plot("bar")
+  ggplot(aes(x = {{ var }}, n)) +
+  geom_col() +
+  geom_text(aes(label = paste(n)),
+    position = position_stack(vjust = 0.5),
+    color = "white", size = 5
+  ) +
+  labs(y = "Number of Cases") +
+  theme_plot("bar")
 
 }
 

@@ -64,7 +64,7 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>“wildlifestrikes” is a package which analyses the wildlife strikes to aircrafts in the United States from 1991 to 2018.</p>
+<p><code>wildlifestrikes</code> is a package which analyses the wildlife strikes to aircraft in the United States from 1991 to 2018.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -79,8 +79,8 @@
 </h2>
 <p>The goals of the package are to:</p>
 <ul>
-<li>Inform users of the conditions and factors that affect the frequency and occurrence of wildlife strikes on aircrafts</li>
-<li>Analyse the number of cases of wildlife strikes on aircrafts in the user selected states</li>
+<li>Inform users of the conditions and factors that affect the frequency and occurrence of wildlife strikes on aircraft</li>
+<li>Analyse the number of cases of wildlife strikes on aircraft in the user selected states</li>
 <li>Analyse the impact of wildlife strikes on airlines in terms of number of cases, damage levels and repair costs</li>
 <li>Calculate the correlation and p-value between selected variable and repair cost incurred due to wildlife strikes</li>
 <li>Provide an easy to use and clear platform to digest and understand the data using Shiny</li>
@@ -94,7 +94,7 @@
 <p>The below examples use the built-in dataset <code>wildlife_strikes</code> and <code>USmap</code>.</p>
 <p>The package contains the following functions:</p>
 <ol style="list-style-type: decimal">
-<li>The function, <code><a href="reference/count_frequency.html">count_frequency()</a></code> calculates the frequency of the observations for a particular variable in the <code>wildlife_strikes</code> data set in a tibble format while <code><a href="reference/count_frequency.html">count_frequency_plot()</a></code> shows the frequency of observations in a bar plot. It is helpful in identifying which condition in the variable is associated with higher occurrence of wildlife strikes to aircrafts. This function has been used in the Shiny App as well.</li>
+<li>The function, <code><a href="reference/count_frequency.html">count_frequency()</a></code> calculates the frequency of the observations for a particular variable in the <code>wildlife_strikes</code> data set in a tibble format while <code><a href="reference/count_frequency.html">count_frequency_plot()</a></code> shows the frequency of observations in a bar plot. It is helpful in identifying which condition in the variable is associated with higher occurrence of wildlife strikes to aircrafts.</li>
 </ol>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/count_frequency.html">count_frequency</a></span><span class="op">(</span><span class="va">sky</span><span class="op">)</span></span>
@@ -109,7 +109,7 @@
 <code class="sourceCode R"><span><span class="fu"><a href="reference/count_frequency.html">count_frequency_plot</a></span><span class="op">(</span><span class="va">sky</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-unnamed-chunk-5-1.png" width="100%"></p>
 <ol start="2" style="list-style-type: decimal">
-<li>The function, <code><a href="reference/cases_statemap.html">cases_statemap()</a></code> presents the number of wildlife strikes reported in the selected states from 1991 to 2018 in a choropleth map. Alternatively, run <code><a href="reference/cases_statemap.html">cases_state()</a></code> to show the observations for the selected states in a tibble format. This function has been used in the Shiny App as well.</li>
+<li>The function, <code><a href="reference/cases_statemap.html">cases_statemap()</a></code> presents the number of wildlife strikes reported in the selected states from 1991 to 2018 in a choropleth map. Alternatively, run <code><a href="reference/cases_statemap.html">cases_state()</a></code> to show the observations for the selected states in a tibble format.</li>
 </ol>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/cases_statemap.html">cases_statemap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"arizona"</span>, <span class="st">"california"</span>, <span class="st">"florida"</span>, <span class="st">"colorado"</span>, <span class="st">"texas"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -126,13 +126,13 @@
 <span><span class="co">#&gt; 4 FL                                     18 florida        </span></span>
 <span><span class="co">#&gt; 5 TX                                     26 texas</span></span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
-<li>The function, <code><a href="reference/cases_airline.html">cases_airline()</a></code>returns a message to you on the number of attacks incurred by your selected airline in the your selected year. This function has been used in the Shiny App as well.</li>
+<li>The function, <code><a href="reference/cases_airline.html">cases_airline()</a></code>returns a message to you on the number of attacks incurred by your selected airline in the your selected year.</li>
 </ol>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/cases_airline.html">cases_airline</a></span><span class="op">(</span><span class="st">"AMERICAN AIRLINES"</span>, <span class="fl">2018</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "AMERICAN AIRLINES incurred 4  wildlife strikes to the aircrafts in 2018."</span></span></code></pre></div>
 <ol start="4" style="list-style-type: decimal">
-<li>You can get further information on the number of attacks by your selected airline in your selected year by damage levels by running the function <code><a href="reference/damages_airline.html">damages_airline()</a></code>. This function has been used in the Shiny App as well.</li>
+<li>You can get further information on the number of attacks by your selected airline in your selected year by damage levels by running the function <code><a href="reference/damages_airline.html">damages_airline()</a></code>.</li>
 </ol>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/damages_airline.html">damages_airline</a></span><span class="op">(</span><span class="st">"AMERICAN AIRLINES"</span>, <span class="fl">2011</span><span class="op">)</span></span>
@@ -144,7 +144,7 @@
 <span><span class="co">#&gt; 2 AMERICAN AIRLINES Uncertain            2011     1</span></span>
 <span><span class="co">#&gt; 3 AMERICAN AIRLINES Substantial          2011     2</span></span></code></pre></div>
 <ol start="5" style="list-style-type: decimal">
-<li>The function <code>hist.R()</code>, builds the histogram which shows the distribution of repair costs incurred for the selected airline from 1991 to 2018 due to wildlife strikes. This function has been used in the Shiny App as well.</li>
+<li>The function <code>hist.R()</code>, builds the histogram which shows the distribution of repair costs incurred for the selected airline from 1991 to 2018 due to wildlife strikes.</li>
 </ol>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/histPlot.html">histPlot</a></span><span class="op">(</span><span class="st">"AMERICAN AIRLINES"</span>, <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
@@ -174,6 +174,12 @@
 <p>To launch the shiny app, run the following:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/run_app.html">run_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>I’ve also built an Shiny Application where some of the functions are embedded in the application. The Shiny app contains three tabs.</p>
+<ol style="list-style-type: decimal">
+<li><p>The first tab is built by the <code><a href="reference/count_frequency.html">count_frequency()</a></code> function and prompts you to guess answers to three questions relating to the factors/conditions affecting wildlife strikes.</p></li>
+<li><p>The second tab is built by the <code>plot_map.R</code> function (specifically <code>cases_state(input_state)</code> and <code>cases_statemap(input_state)</code>) and shows the number of cases from 1991 to 2018 for your selected U.S. State in tibble format and on the choropleth map.</p></li>
+<li><p>The third and final tab is built by <code><a href="reference/cases_airline.html">cases_airline()</a></code> function which returns a message to you on the number of wildlife strike cases incurred by the selected airplane in the selected year. This is then further categorised into different damages level by using the <code>damages_airline</code> function. <code>hist.R</code> function creates a histogram showing the distribution of repair costs incurred ranging from 1991 to 2018 for the airline you have selected.</p></li>
+</ol>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="license">

@@ -14,7 +14,7 @@
 #' @export
 
 
-ui_input <- function(input_type, input_id, dataset){
+ui_input <- function(input_type, input_id, dataset) {
 
   if(input_type == "operator"){
 
@@ -23,7 +23,7 @@ ui_input <- function(input_type, input_id, dataset){
                   choices = unique(dataset$operator),
                   inline = TRUE )
 
-  } else if (input_type == "state"){
+  } else if (input_type == "state") {
 
     selectInput (inputId = input_id,
                  label = "Choose states",
@@ -53,7 +53,7 @@ ui_input <- function(input_type, input_id, dataset){
                   choices = c("Take-off run", "Descent", "Landing Roll", "Climb", "Approach"),
                   inline = TRUE )
 
-  } else if (input_type == "guess3"){
+  } else if (input_type == "guess3") {
 
     radioButtons (inputId = input_id,
                   label = "Guess: Which sky condition where wildlife strikes occurred the most?",
@@ -66,10 +66,6 @@ ui_input <- function(input_type, input_id, dataset){
                 min = 5,
                 max = 20,
                 value = 10)
-
   }
-
-
-
 
 }
