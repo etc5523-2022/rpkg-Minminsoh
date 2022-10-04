@@ -120,3 +120,7 @@ I've also built an Shiny Application where some of the functions are embedded in
 2. The second tab is built by the `plot_map.R` function (specifically `cases_state(input_state)` and `cases_statemap(input_state)`) and shows the number of cases from 1991 to 2018 for your selected U.S. State in tibble format and on the choropleth map. 
 
 3. The third and final tab is built by `cases_airline()` function which returns a message to you on the number of wildlife strike cases incurred by the selected airplane in the selected year. This is then further categorised into different damages level by using the `damages_airline` function. `hist.R` function creates a histogram showing the distribution of repair costs incurred ranging from 1991 to 2018 for the airline you have selected.  
+
+## Learn more about the package 
+
+Refer to the [pkgdownwebsite](https://etc5523-2022.github.io/rpkg-Minminsoh/) to learn about the package and the functions built in this package. If you would like access the comprehensive guide on the dataset used, examples on how to use the functions, you can refer to the [vignette](https://etc5523-2022.github.io/rpkg-Minminsoh/articles/wildlifestrikes_aircrafts_USA.html). 

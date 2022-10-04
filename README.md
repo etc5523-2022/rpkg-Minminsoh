@@ -175,3 +175,12 @@ embedded in the application. The Shiny app contains three tabs.
     `damages_airline` function. `hist.R` function creates a histogram
     showing the distribution of repair costs incurred ranging from 1991
     to 2018 for the airline you have selected.
+
+## Learn more about the package
+
+Refer to the
+[pkgdownwebsite](https://etc5523-2022.github.io/rpkg-Minminsoh/) to
+learn about the package and the functions built in this package. If you
+would like access the comprehensive guide on the dataset used, examples
+on how to use the functions, you can refer to the
+[vignette](https://etc5523-2022.github.io/rpkg-Minminsoh/articles/wildlifestrikes_aircrafts_USA.html).
